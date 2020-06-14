@@ -195,15 +195,17 @@
     
     
     <div class="col-12 col-md-12 mx-auto index-info">
-      <a class="index-header" href="/2020/06/14/%E5%9B%B0%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/">困了怎么办?</a>
+      <a class="index-header" href="/2020/06/14/%E5%9B%B0%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/">源码解读 Golang 中 sync.Map 的实现原理</a>
 
       <a href="/2020/06/14/%E5%9B%B0%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/" class="index-excerpt">
         
         
           
         
-        <div>现在是凌晨4点半, 我仍然不困 嘻嘻嘻,
-</div>
+        <div>简介 Go 的内建 map 是不支持并发写操作的，原因是 map 写操作不是并发安全的，当你尝试多个 Goroutine 操作同一个 map，会产生报错：fatal error: concurrent map writes。
+因此官方另外引入了 sync.Map 来满足并发编程中的应用。
+sync.Map 的实现原理可概括为：
+通过 read 和 dirty 两个字段将读写分离，读的数据存在只读字</div>
       </a>
 
       <div class="index-btm post-metas">
@@ -516,10 +518,10 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "An elegant Material-Design theme for Hexo&nbsp;",
+        "永远年轻,永远热泪盈眶&nbsp;",
       ],
       cursorChar: "_",
-      typeSpeed: 70,
+      typeSpeed: 200,
       loop: false,
     });
     typed.stop();
@@ -552,6 +554,26 @@
 
 
 
+
+  <script>(function (i, s, o, g, r, a, m) {
+      i['DaoVoiceObject'] = r;
+      i[r] = i[r] ||
+        function () {
+          (i[r].q = i[r].q || []).push(arguments);
+        };
+      i[r].l = 1 * new Date();
+      a = s.createElement(o);
+      m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      a.charset = 'utf-8';
+      m.parentNode.insertBefore(a, m);
+    })(window, document, 'script', ('https:' === document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/e2a992e4.js", 'daovoice');
+    daovoice('init', {
+      app_id: "e2a992e4",
+    });
+    daovoice('update');
+  </script>
 
 
 
