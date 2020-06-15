@@ -32,5 +32,34 @@
   
   
   
+  <entry>
+    <title>源码解读 Golang 中 sync.Map 的实现原理</title>
+    <link href="/2020/06/14/%E5%9B%B0%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E2/"/>
+    <url>/2020/06/14/%E5%9B%B0%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E2/</url>
+    
+    <content type="html"><![CDATA[<style>  /* 只设置 markdown 字体 */  .markdown-body {    font-family: KaiTi,"Microsoft YaHei",Georgia, sans, serif;    font-size: 16px;  }</style><div class="markdown-body"> 简介Go 的内建 map 是不支持并发写操作的，原因是 map 写操作不是并发安全的，当你尝试多个 Goroutine 操作同一个 map，会产生报错：fatal error: concurrent map writes。<p>因此官方另外引入了 sync.Map 来满足并发编程中的应用。<br><img src="http://tvax3.sinaimg.cn/large/006cVhGqgy1gftbjxwlraj30fs08w74j.jpg" srcset="/img/loading.gif" alt=""><br>sync.Map 的实现原理可概括为：</p><div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="http://tvax3.sinaimg.cn/large/006cVhGqgy1gftbjxwlraj30fs08w74j.jpg" srcset="/img/loading.gif" alt=""></div><div class="group-image-wrap"><img src="http://tvax3.sinaimg.cn/large/006cVhGqgy1gftbjxwlraj30fs08w74j.jpg" srcset="/img/loading.gif" alt=""></div><div class="group-image-wrap"><img src="http://tvax3.sinaimg.cn/large/006cVhGqgy1gftbjxwlraj30fs08w74j.jpg" srcset="/img/loading.gif" alt=""></div></div><div class="group-image-row"><div class="group-image-wrap"><img src="http://tvax3.sinaimg.cn/large/006cVhGqgy1gftbjxwlraj30fs08w74j.jpg" srcset="/img/loading.gif" alt=""></div><div class="group-image-wrap"><img src="http://tvax3.sinaimg.cn/large/006cVhGqgy1gftbjxwlraj30fs08w74j.jpg" srcset="/img/loading.gif" alt=""></div></div></div><p>这是一句话<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="这是对应的脚注">[1]</span></a></sup></p><div class="note note-success">            <p>文字 或者 <code>markdown</code> 均可</p>          </div></div><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>这是对应的脚注<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>]]></content>
+    
+    
+    <categories>
+      
+      <category>技术</category>
+      
+      <category>生活</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>go语言</tag>
+      
+      <tag>钻研</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
   
 </search>
