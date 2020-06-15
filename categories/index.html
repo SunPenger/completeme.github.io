@@ -45,7 +45,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>僕の生活</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>我的博客</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -85,38 +85,11 @@
           
           
           
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                
-                  
-                  
-                  
-                  <a class="dropdown-item" href="https://hexo.fluid-dev.com/docs/guide/" target="_blank" rel="noopener">
-                    
-                    text1
-                  </a>
-                
-                  
-                  
-                  
-                  <a class="dropdown-item" href="https://hexo.fluid-dev.com/docs/example/" target="_blank" rel="noopener">
-                    
-                    text2
-                  </a>
-                
-                  
-                  
-                  
-                  <a class="dropdown-item" href="https://hexo.fluid-dev.com/docs/icon/" target="_blank" rel="noopener">
-                    
-                    text3
-                  </a>
-                
-              </div>
             </li>
           
         
@@ -144,6 +117,18 @@
             </li>
           
         
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友情链接
+              </a>
+            </li>
+          
+        
         
           <li class="nav-item" id="search-btn">
             <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
@@ -156,7 +141,7 @@
 </nav>
 
     <div class="view intro-2" id="background" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
+         style="background: url('http://tvax4.sinaimg.cn/large/006cVhGqgy1gftgiw4fp6j31hc0u0jz9.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -195,6 +180,78 @@
   
   
   
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckbgtzsz30003j00q6jpwfd07" role="tab" data-toggle="collapse" href="#collapse-ckbgtzsz30003j00q6jpwfd07"
+        aria-expanded="false"
+      >
+        技术
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E6%8A%80%E6%9C%AF/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckbgtzsz30003j00q6jpwfd07" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckbgtzsz30003j00q6jpwfd07">
+    
+    
+    
+      
+      
+        <a href="/2020/06/14/%E5%9B%B0%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/" class="list-group-item list-group-item-action">
+          <span class="category-post">源码解读 Golang 中 sync.Map 的实现原理</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    <div class="category row">
+      <a
+        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
+        id="heading-ckbgtzsz50005j00q4f92edpd" role="tab" data-toggle="collapse" href="#collapse-ckbgtzsz50005j00q4f92edpd"
+        aria-expanded="false"
+      >
+        生活
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      <a href="/categories/%E7%94%9F%E6%B4%BB/" class="category-count col-2 col-md-1">
+        <i class="iconfont icon-articles"></i>
+        <span>1</span>
+      </a>
+      <div class="category-collapse">
+        
+          
+  <div id="collapse-ckbgtzsz50005j00q4f92edpd" class="collapse in" role="tabpanel"
+       aria-labelledby="heading-ckbgtzsz50005j00q4f92edpd">
+    
+    
+    
+      
+      
+        <a href="/2020/06/14/%E5%9B%B0%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/" class="list-group-item list-group-item-action">
+          <span class="category-post">源码解读 Golang 中 sync.Map 的实现原理</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
   
 </div>
 
@@ -492,7 +549,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Category&nbsp;",
+        "分类&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 200,

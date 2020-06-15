@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>Archives - Hexo</title>
+  <title>Categories - 生活 - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -412,7 +412,7 @@
       if ('false' === 'true') {
         var viewCtn = document.querySelector('#leancloud-post-views-container');
         if (viewCtn || enableIncr) {
-          var target = decodeURI('/archives/index.html');
+          var target = decodeURI('/categories/%E7%94%9F%E6%B4%BB/index.html');
           var viewGetter = getRecord(Counter, target).then((record) => {
             incrArr.push(buildIncrement(record.objectId))
             if (viewCtn) {
@@ -481,7 +481,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "档案&nbsp;",
+        "Category - 生活&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 200,
