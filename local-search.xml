@@ -4,56 +4,23 @@
   
   
   <entry>
-    <title>源码解读 Golang 中 sync.Map 的实现原理</title>
-    <link href="/2020/06/14/%E5%9B%B0%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/"/>
-    <url>/2020/06/14/%E5%9B%B0%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/</url>
+    <title>git的简单操作和实用方法</title>
+    <link href="/2020/06/19/git%E7%9A%84%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C%E5%92%8C%E5%AE%9E%E7%94%A8%E6%96%B9%E6%B3%95/"/>
+    <url>/2020/06/19/git%E7%9A%84%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C%E5%92%8C%E5%AE%9E%E7%94%A8%E6%96%B9%E6%B3%95/</url>
     
-    <content type="html"><![CDATA[<style>  /* 只设置 markdown 字体 */  .markdown-body {    font-family: KaiTi,"Microsoft YaHei",Georgia, sans, serif;    font-size: 16px;  }</style><div class="markdown-body"> 简介Go 的内建 map 是不支持并发写操作的，原因是 map 写操作不是并发安全的，当你尝试多个 Goroutine 操作同一个 map，会产生报错：fatal error: concurrent map writes。<p>因此官方另外引入了 sync.Map 来满足并发编程中的应用。<br><img src="http://tvax3.sinaimg.cn/large/006cVhGqgy1gftbjxwlraj30fs08w74j.jpg" srcset="/img/loading.gif" alt=""><br>sync.Map 的实现原理可概括为：</p><div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="http://tvax3.sinaimg.cn/large/006cVhGqgy1gftbjxwlraj30fs08w74j.jpg" srcset="/img/loading.gif" alt=""></div><div class="group-image-wrap"><img src="http://tvax3.sinaimg.cn/large/006cVhGqgy1gftbjxwlraj30fs08w74j.jpg" srcset="/img/loading.gif" alt=""></div><div class="group-image-wrap"><img src="http://tvax3.sinaimg.cn/large/006cVhGqgy1gftbjxwlraj30fs08w74j.jpg" srcset="/img/loading.gif" alt=""></div></div><div class="group-image-row"><div class="group-image-wrap"><img src="http://tvax3.sinaimg.cn/large/006cVhGqgy1gftbjxwlraj30fs08w74j.jpg" srcset="/img/loading.gif" alt=""></div><div class="group-image-wrap"><img src="http://tvax3.sinaimg.cn/large/006cVhGqgy1gftbjxwlraj30fs08w74j.jpg" srcset="/img/loading.gif" alt=""></div></div></div><p>这是一句话<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="这是对应的脚注">[1]</span></a></sup></p><div class="note note-success">            <p>文字 或者 <code>markdown</code> 均可</p>          </div></div><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>这是对应的脚注<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>]]></content>
+    <content type="html"><![CDATA[<p><img src="http://tva1.sinaimg.cn/large/006cVhGqgy1gfwt4rcxxrj30wk09gt9x.jpg" srcset="/img/loading.gif" alt=""></p><p>Workspace: 工作区</p><p>Index/Stage: 暂存区</p><p>Repository: 仓库区（或本地仓库)</p><p>Remote: 远程仓库</p><h2 id="一、最简单提交总流程"><a href="#一、最简单提交总流程" class="headerlink" title="一、最简单提交总流程"></a>一、最简单提交总流程</h2><p>把本地代码上传到远程仓库，最简单的流程是</p><pre><code class="hljs css">(一)在项目根目录下初始化一个本地仓库$ git init# 显示当前的<span class="hljs-selector-tag">Git</span>配置$ git config --list# 编辑<span class="hljs-selector-tag">Git</span>配置文件$ git config -e [--global]# 设置提交代码时的用户信息$ git config [--global] user.name "[name]"$ git config [--global] user.email "[email address]"(二)把全部代码提交到暂存区$ git add .  别漏了add后面的点 $ git status   查看状态(三)把暂存区的代码提交到本地仓库$ git commit -m "[message]"  这里引号内容会附在本次提交的文件上，有注解的作用。(四)添加远程仓库$ git remote add &lt;reomote-name&gt; &lt;url&gt;  名字自取，不需要跟远程仓库一模一样。# 友情提示:默认的主分支是<span class="hljs-selector-tag">master</span>$ git push &lt;remote-name&gt;  master 至此就已经把代码提交到仓库上啦！ 下面是我摘抄的一些实用的命令</code></pre><h2 id="二、增加-删除文件"><a href="#二、增加-删除文件" class="headerlink" title="二、增加/删除文件"></a>二、增加/删除文件</h2><pre><code class="hljs css">$ git add &lt;file1&gt; &lt;file2&gt;  添加f文件到暂存区$ git add &lt;dir&gt;   提交指定目录到暂存区，包括子目录$ git add .  添加所有文件到暂存区# 如果你只想把某个文件保存在工作区使用，而不想将其添加到暂存区时#（通常情况是你不想把这个文件提交到远程仓库才需要这么做）$ git rm --cached &lt;file&gt;  停止追踪该文件$ git rm -r --cached &lt;dir&gt;   停止追踪该文件夹，-r是递归处理</code></pre><h2 id="三、代码提交："><a href="#三、代码提交：" class="headerlink" title="三、代码提交："></a>三、代码提交：</h2><pre><code class="hljs css">$ git commit -m  "[message]"  提交暂存区的文件到仓库区</code></pre><p>分支策略：首先master主分支应该是非常稳定的，也就是用来发布新版本，一般情况下不允许在上面干活，干活一般情况下在新建的dev分支上干活，干完后，比如上要发布，或者说dev分支代码稳定后可以合并到主分支master上来</p><h2 id="四、分支相关："><a href="#四、分支相关：" class="headerlink" title="四、分支相关："></a>四、分支相关：</h2><pre><code class="hljs css">$ git branch  查看分支$ git branch &lt;name&gt;  创建分支$ git checkout &lt;name&gt;  切换分支$ git merge &lt;name&gt;  合并某分支到当前分支$ git branch -d &lt;name&gt;  或者  $ git branch --delete &lt;name&gt;</code></pre><h2 id="五、远程同步"><a href="#五、远程同步" class="headerlink" title="五、远程同步"></a>五、远程同步</h2><pre><code class="hljs css">$ git remote 查看远程库简略信息$ git remote -v 查看远程库详细信息# 添加新的远程仓库,名字可以自由定义,不需要跟远程仓库保持一致$ git remote add &lt;remote-name&gt; &lt;url&gt;</code></pre><h4 id="1）本地仓库-gt-远程仓库"><a href="#1）本地仓库-gt-远程仓库" class="headerlink" title="(1）本地仓库=&gt;远程仓库"></a>(1）本地仓库=&gt;远程仓库</h4><pre><code class="hljs css">$ git push &lt;remote-name&gt; &lt;branch-name&gt;    把分支推上远程仓库# 如果想要一次推向多个仓库，可以用一个关联多个仓库,格式如下$ git remote set-url --add &lt;remote-name&gt; &lt;branch-name&gt;# 例(<span class="hljs-selector-tag">remote-name</span>用<span class="hljs-selector-tag">origin</span>，<span class="hljs-selector-tag">branch-name</span>用<span class="hljs-selector-tag">master</span>):$ git remote set-url --add origin &lt;url-1&gt;  关联url-1 $ git remote set-url --add origin &lt;url-2&gt;  关联url-2$ git remote set-url --add origin &lt;url-3&gt;  关联url-3$ git remote origin master    推送分支master到origin关联的三个仓库# 如果<span class="hljs-selector-tag">push</span>一直报错，提示你应该先把远程的最新版本拉取下来，# 然而你觉得远程库的代码已经是废品没必要拉去下来时，可以# 把本地代码强制<span class="hljs-selector-tag">push</span>到远程仓库（注意，如果是你自己的仓库，# 会直接覆盖原来的内容）$ git push -f &lt;remote-name&gt; &lt;branch-name&gt;  -f 强制，force</code></pre><h3 id="（2）远程仓库-gt-本地仓库"><a href="#（2）远程仓库-gt-本地仓库" class="headerlink" title="（2）远程仓库 =&gt; 本地仓库"></a>（2）远程仓库 =&gt; 本地仓库</h3><pre><code class="hljs css"># 下载远程仓库的所有变动到本地仓库，不会覆盖工作区$ git fetch &lt;remote-name&gt; &lt;branch-name&gt;# 把远程仓库的分支合并到当前本地的分支，注意第二个参数是远程仓库的分支名(eg:origin/master)$ git merge &lt;remote-name&gt;/&lt;branch-name&gt;# 下载远程仓库到工作区$ git pull &lt;remote-name&gt; &lt;branch-name&gt;# <span class="hljs-selector-tag">git</span> <span class="hljs-selector-tag">pull</span>相当于是从远程获取最新版本并<span class="hljs-selector-tag">merge</span>（合并）到本地     # git pull = git fetch + git merge, git fetch更安全一些,git pull慎用</code></pre><p>不懂教到懂系列、保姆式教程：</p><p><a href="https://www.imooc.com/article/20411" target="_blank" rel="noopener">https://www.imooc.com/article/20411</a></p><p>更多实用命令参见阮老师的文章：<br><a href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html</a></p><p>一整个星期下来，看了两三个牛人的技术生涯，忽然就觉得自己的格局还是那么的小。<br>这是个13岁编程，60岁总结自己的一生，并不是觉得他有多么的厉害，而是这份总结写的实在是非常贴切真实。<br><a href="https://hackernoon.com/what-happened-to-software-development-j92032w9#subscribe-embed" target="_blank" rel="noopener">https://hackernoon.com/what-happened-to-software-development-j92032w9#subscribe-embed</a></p><p><a href="https://www.cnblogs.com/ECJTUACM-873284962/" target="_blank" rel="noopener">https://www.cnblogs.com/ECJTUACM-873284962/</a></p><p>转载自:<a href="https://litstronger.github.io/2020/03/19/Git%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C-%E5%AE%9E%E7%94%A8%E5%91%BD%E4%BB%A4-%E4%B8%AA%E4%BA%BA%E5%BF%83%E5%BE%97/#%EF%BC%881%EF%BC%89%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93-gt-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93" target="_blank" rel="noopener">https://litstronger.github.io/2020/03/19/Git%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C-%E5%AE%9E%E7%94%A8%E5%91%BD%E4%BB%A4-%E4%B8%AA%E4%BA%BA%E5%BF%83%E5%BE%97/#%EF%BC%881%EF%BC%89%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93-gt-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93</a></p><h2 id="探索的路上从来就不需要鞭策，灵魂会狂野自由地成长"><a href="#探索的路上从来就不需要鞭策，灵魂会狂野自由地成长" class="headerlink" title="探索的路上从来就不需要鞭策，灵魂会狂野自由地成长"></a>探索的路上从来就不需要鞭策，灵魂会狂野自由地成长</h2>]]></content>
     
     
     <categories>
       
-      <category>技术</category>
-      
-      <category>生活</category>
+      <category>Git归纳</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>go语言</tag>
-      
-      <tag>钻研</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>源码解读 Golang 中 sync.Map 的实现原理</title>
-    <link href="/2020/06/14/%E5%9B%B0%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E2/"/>
-    <url>/2020/06/14/%E5%9B%B0%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E2/</url>
-    
-    <content type="html"><![CDATA[<style>  /* 只设置 markdown 字体 */  .markdown-body {    font-family: KaiTi,"Microsoft YaHei",Georgia, sans, serif;    font-size: 16px;  }</style><div class="markdown-body"> 简介Go 的内建 map 是不支持并发写操作的，原因是 map 写操作不是并发安全的，当你尝试多个 Goroutine 操作同一个 map，会产生报错：fatal error: concurrent map writes。<p>因此官方另外引入了 sync.Map 来满足并发编程中的应用。<br><img src="http://tvax3.sinaimg.cn/large/006cVhGqgy1gftbjxwlraj30fs08w74j.jpg" srcset="/img/loading.gif" alt=""><br>sync.Map 的实现原理可概括为：</p><div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="http://tvax3.sinaimg.cn/large/006cVhGqgy1gftbjxwlraj30fs08w74j.jpg" srcset="/img/loading.gif" alt=""></div><div class="group-image-wrap"><img src="http://tvax3.sinaimg.cn/large/006cVhGqgy1gftbjxwlraj30fs08w74j.jpg" srcset="/img/loading.gif" alt=""></div><div class="group-image-wrap"><img src="http://tvax3.sinaimg.cn/large/006cVhGqgy1gftbjxwlraj30fs08w74j.jpg" srcset="/img/loading.gif" alt=""></div></div><div class="group-image-row"><div class="group-image-wrap"><img src="http://tvax3.sinaimg.cn/large/006cVhGqgy1gftbjxwlraj30fs08w74j.jpg" srcset="/img/loading.gif" alt=""></div><div class="group-image-wrap"><img src="http://tvax3.sinaimg.cn/large/006cVhGqgy1gftbjxwlraj30fs08w74j.jpg" srcset="/img/loading.gif" alt=""></div></div></div><p>这是一句话<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="这是对应的脚注">[1]</span></a></sup></p><div class="note note-success">            <p>文字 或者 <code>markdown</code> 均可</p>          </div></div><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>这是对应的脚注<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>]]></content>
-    
-    
-    <categories>
-      
-      <category>技术</category>
-      
-      <category>生活</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>go语言</tag>
-      
-      <tag>钻研</tag>
+      <tag>Git</tag>
       
     </tags>
     

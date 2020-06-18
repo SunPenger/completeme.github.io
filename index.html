@@ -179,38 +179,49 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/06/14/%E5%9B%B0%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/" target="_blank">
-          <img src="http://tvax3.sinaimg.cn/large/006cVhGqgy1gftbjxwlraj30fs08w74j.jpg" srcset="/img/loading.gif" alt="源码解读 Golang 中 sync.Map 的实现原理">
+        <a href="/2020/06/19/git%E7%9A%84%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C%E5%92%8C%E5%AE%9E%E7%94%A8%E6%96%B9%E6%B3%95/" target="_blank">
+          <img src="http://tva1.sinaimg.cn/large/006cVhGqgy1gfwt4rcxxrj30wk09gt9x.jpg" srcset="/img/loading.gif" alt="git的简单操作和实用方法">
         </a>
       </div>
     
     <div class="col-12 col-md-8 mx-auto index-info">
-      <a class="index-header" href="/2020/06/14/%E5%9B%B0%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/">源码解读 Golang 中 sync.Map 的实现原理</a>
+      <a class="index-header" href="/2020/06/19/git%E7%9A%84%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C%E5%92%8C%E5%AE%9E%E7%94%A8%E6%96%B9%E6%B3%95/">git的简单操作和实用方法</a>
 
-      <a href="/2020/06/14/%E5%9B%B0%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E/" class="index-excerpt">
+      <a href="/2020/06/19/git%E7%9A%84%E7%AE%80%E5%8D%95%E6%93%8D%E4%BD%9C%E5%92%8C%E5%AE%9E%E7%94%A8%E6%96%B9%E6%B3%95/" class="index-excerpt">
         
         
           
         
-        <div>简介 Go 的内建 map 是不支持并发写操作的，原因是 map 写操作不是并发安全的，当你尝试多个 Goroutine 操作同一个 map，会产生报错：fatal error: concurrent map writes。
-因此官方另外引入了 sync.Map 来满足并发编程中的应用。
-sync.Map 的实现原理可概括为：
-通过 read 和 dirty 两个字段将读写分离，读的数据存在只读字</div>
+        <div>
+Workspace: 工作区
+Index/Stage: 暂存区
+Repository: 仓库区（或本地仓库)
+Remote: 远程仓库
+一、最简单提交总流程把本地代码上传到远程仓库，最简单的流程是
+(一)在项目根目录下初始化一个本地仓库
+
+$ git init
+
+# 显示当前的Git配置
+
+$ git config --list
+
+# 编辑Git配置文件
+
+$ git config -e [--</div>
       </a>
 
       <div class="index-btm post-metas">
         
           <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-06-14
+            <i class="iconfont icon-date"></i>&nbsp;2020-06-19
           </div>
         
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-            
-              <a href="/categories/%E7%94%9F%E6%B4%BB/">生活</a>
+              <a href="/categories/Git%E5%BD%92%E7%BA%B3/">Git归纳</a>
             
           </div>
         
@@ -218,62 +229,7 @@ sync.Map 的实现原理可概括为：
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/go%E8%AF%AD%E8%A8%80/">go语言</a>
-            
-              <a href="/tags/%E9%92%BB%E7%A0%94/">钻研</a>
-            
-          </div>
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2020/06/14/%E5%9B%B0%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E2/" target="_blank">
-          <img src="http://tvax3.sinaimg.cn/large/006cVhGqgy1gftbjxwlraj30fs08w74j.jpg" srcset="/img/loading.gif" alt="源码解读 Golang 中 sync.Map 的实现原理">
-        </a>
-      </div>
-    
-    <div class="col-12 col-md-8 mx-auto index-info">
-      <a class="index-header" href="/2020/06/14/%E5%9B%B0%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E2/">源码解读 Golang 中 sync.Map 的实现原理</a>
-
-      <a href="/2020/06/14/%E5%9B%B0%E4%BA%86%E6%80%8E%E4%B9%88%E5%8A%9E2/" class="index-excerpt">
-        
-        
-          
-        
-        <div>简介 Go 的内建 map 是不支持并发写操作的，原因是 map 写操作不是并发安全的，当你尝试多个 Goroutine 操作同一个 map，会产生报错：fatal error: concurrent map writes。
-因此官方另外引入了 sync.Map 来满足并发编程中的应用。
-sync.Map 的实现原理可概括为：
-通过 read 和 dirty 两个字段将读写分离，读的数据存在只读字</div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>&nbsp;2020-06-14
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-            
-              <a href="/categories/%E7%94%9F%E6%B4%BB/">生活</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/go%E8%AF%AD%E8%A8%80/">go语言</a>
-            
-              <a href="/tags/%E9%92%BB%E7%A0%94/">钻研</a>
+              <a href="/tags/Git/">Git</a>
             
           </div>
         
@@ -602,7 +558,7 @@ sync.Map 的实现原理可概括为：
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "我希望你过得不好&nbsp;",
+        "任谁都不能阻挡那向往自由的风&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 200,
